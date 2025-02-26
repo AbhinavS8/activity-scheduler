@@ -1,23 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
-import axios from "axios";
-import {useEffect, useState} from "react";
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import Home from "./pages/Home"
 
-function App() {
-  
-    const [listActivities, setNewList] = useState([]);
-    useEffect(() => {
-      axios.get("http://localhost:3001/activities").then((response) => {
-        // console.log(response);
-        setNewList(response.data);
-      })
-    }, []);
+function App() { //route structure
 
-    return (<div className="App">
-      {listActivities.map((value, key) => {
-        return (<div>{value.name}</div>);
-      })}
-    
+    return (
+    <div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </Router>
     </div>
   );
 }
