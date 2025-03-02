@@ -14,7 +14,11 @@ function Home() {
 
     return (<div className="App">
       {listActivities.map((value, key) => {
-        return (<div>{value.name}</div>);
+        return (<div>
+        <div>{value.name} id: {value.id}</div>
+        <div></div>
+      </div>
+      );
       })}
     
     </div>
