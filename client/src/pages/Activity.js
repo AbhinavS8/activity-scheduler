@@ -7,16 +7,12 @@ function Activity() {
     const [activityObject, setActivityObject] = useState({});
 
     useEffect(() => {
-        axios.get("http://localhost:3001/activities/byId/"+{id}).then((response) =>
-        {   
+        axios.get(`http://localhost:3001/activities/byId/${id}`).then((response) =>
+        {
             setActivityObject(response.data);
-            console.log(response);
         })
-    })
-    return(<div>
-        <div>id: {id}</div>
-        <div>{activityObject.name} {activityObject.id}</div>
-        </div>)
+    }, [])
+    return(<div>{activityObject.name}</div>)
 }
 
 export default Activity
