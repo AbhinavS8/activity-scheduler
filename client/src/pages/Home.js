@@ -2,7 +2,7 @@ import React from 'react'
 import axios from "axios";
 import {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom"
-
+import "./Home.css"
 
 function Home() {
   
@@ -21,7 +21,8 @@ function Home() {
       {listActivities.map((value, key) => {
 
         return (<div className='activity' onClick={() =>
-          navigate(`/activity/${value.id}`)        }>
+          navigate(`/activity/${value.id}`)
+          }>
         <div>{value.name} id: {value.id}</div>
       </div>
       );

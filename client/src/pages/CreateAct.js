@@ -1,6 +1,7 @@
 import {Formik, Form, Field, ErrorMessage} from "formik"
 import * as Yup from "yup"
 import axios from "axios"
+import "./CreateAct.css"
 
 function CreateAct() {
     const initialValues = {

@@ -1,23 +1,23 @@
-import './App.css';
-import {BrowserRouter as Router, Route, Routes,Link} from 'react-router-dom'
-import Home from "./pages/Home"
-import CreateAct from "./pages/CreateAct"
-import Activity from "./pages/Activity"
+import "./Navbar.css"; // Import the CSS file
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import Home from "./pages/Home";
+import CreateAct from "./pages/CreateAct";
+import Activity from "./pages/Activity";
 
-
-function App() { //route structure
-
-    return (
+function App() {
+  return (
     <div>
-    <Router>
-      <Link to="/createactivity">goes to creating activity route!</Link>
-      <Link to="/">goes to home!</Link>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/createactivity" element={<CreateAct />} />
-        <Route path="/activity/:id" element={<Activity />} />
-      </Routes>
-    </Router>
+      <Router>
+        <nav className="navbar">
+          <Link to="/">Home</Link>
+          <Link to="/createactivity">Create Activity</Link>
+        </nav>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/createactivity" element={<CreateAct />} />
+          <Route path="/activity/:id" element={<Activity />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
