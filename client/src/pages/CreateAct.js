@@ -5,21 +5,30 @@ import "./CreateAct.css"
 
 function CreateAct() {
     const initialValues = {
-        name:"sigma",
-        // start_time:"",
-        // end_time:""
+        name:"",
+        streak:0,
+        start_time:"",
+        end_time:"",
+        status:"to do"
     }
 
-    const onSubmit = (data) => {
+    const onSubmit = (data, {resetForm}) => {
         axios.post("http://localhost:3001/activities", data).then((response) => {
             console.log(data);
+            resetForm();
         })
     }
 
     const validationSchema = Yup.object({
         name: Yup.string().required().min(1),
-        // start_time: Yup.required(),
-        // end_time: Yup.required()
+        streak: Yup.number().required(),
+        start_time: Yup.string()
+        .matches(/^([01]\d|2[0-3]):([0-5]\d)$/, "Invalid time format (HH:mm)")
+        .required("Time is required"),
+        end_time: Yup.string()
+        .matches(/^([01]\d|2[0-3]):([0-5]\d)$/, "Invalid time format (HH:mm)")
+        .required("Time is required"),
+        status: Yup.string(),
     })
 
 
@@ -40,11 +49,20 @@ function CreateAct() {
                     placeholder="enter activity name"
                     />
 
-                    {/* <label>start time: </label>
+                    <label>streak: </label>
+                    <ErrorMessage name="streak" component="span"/>
+                    <Field 
+                    id="inputCreateActivity"
+                    name="streak"
+                    placeholder="enter streak"
+                    />
+
+                    <label>start time: </label>
                     <ErrorMessage name="start_time" component="span"/>
                     <Field 
                     id="inputCreateActivity"
                     name="start_time"
+                    placeholder="(HH:mm)"
                     />
 
                     <label>end time: </label>
@@ -52,7 +70,18 @@ function CreateAct() {
                     <Field 
                     id="inputCreateActivity"
                     name="end_time"
-                    /> */}
+                    placeholder="(HH:mm)"
+                    />
+
+                    <label>status: </label>
+                    <ErrorMessage name="status" component="span"/>
+                    <Field 
+                    id="inputCreateActivity"
+                    name="status"
+                    placeholder="enter status"
+                    />
+
+
                     <button type="submit">Create Activity</button>
                 </Form>
             </Formik>

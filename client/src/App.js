@@ -1,4 +1,4 @@
-import "./Navbar.css"; // Import the CSS file
+import "./Navbar.css"; 
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import CreateAct from "./pages/CreateAct";

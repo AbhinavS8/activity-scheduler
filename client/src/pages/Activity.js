@@ -17,7 +17,11 @@ function Activity() {
         <div className="activity-container">
             <div className="activity-box">
                 <div className="activity-title">{activityObject.name}</div>
-                <div className="activity-description">ID: {activityObject.id}</div>
+                <div className="activity-description">
+                    <div>Streak: {activityObject.streak} </div>
+                    <div> {activityObject.start_time} - {activityObject.end_time}</div>
+                    <div> {activityObject.status}</div>
+                </div>
             </div>
         </div>
     );

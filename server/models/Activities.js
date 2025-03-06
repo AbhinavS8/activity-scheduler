@@ -13,10 +13,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
         },
         start_time: {
-            type: DataTypes.DATE,
+            type: DataTypes.STRING,
         },
         end_time: {
-            type: DataTypes.DATE,
+            type: DataTypes.STRING,
         },
         status: {
             type: DataTypes.STRING,
