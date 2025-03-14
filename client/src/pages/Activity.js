@@ -1,11 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Activity.css"; // Import CSS
 
 function Activity() {
     let { id } = useParams();
     const [activityObject, setActivityObject] = useState({});
+    const navigate = useNavigate();
+
+    const deleteAct = (id) => {
+        axios.delete(`http://localhost:3001/activities/${id}`)
+            .then(() => {
+                console.log(`Deleted activity with ID ${id}`);
+                navigate(-1);
+            })
+            
+    };
 
     useEffect(() => {
         axios.get(`http://localhost:3001/activities/byId/${id}`).then((response) => {
@@ -21,6 +31,7 @@ function Activity() {
                     <div>Streak: {activityObject.streak} </div>
                     <div> {activityObject.start_time} - {activityObject.end_time}</div>
                     <div> {activityObject.status}</div>
+                    <button onClick={() => deleteAct(activityObject.id)}>Delete</button>
                 </div>
             </div>
         </div>

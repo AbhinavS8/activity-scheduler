@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const { Activities } = require("../models");
-const { Op } = require("sequelize");
+const { Op, where } = require("sequelize");
 
 router.get("/", async (req, res) => {
     const listActivities = await Activities.findAll();
@@ -12,6 +12,18 @@ router.get("/byId/:id", async (req, res) => {
     const id = req.params.id
     const post = await Activities.findByPk(id)
     res.json(post)
+})
+
+router.delete("/:id", async (req,res) => {
+    actId = Number(req.params.id);
+    const deleted = await Activities.destroy(
+        {
+            where:{id: actId}
+        }
+    )
+    if (deleted) {
+        res.json({ message: `Activity with ID ${actId} deleted successfully` });
+    }
 })
 
 router.get("/schedule", async(req,res) => {
@@ -34,4 +46,4 @@ router.post("/",async (req,res)=>{
     res.json(activity);
 })
 
-module.exports = router
+module.exports = router;

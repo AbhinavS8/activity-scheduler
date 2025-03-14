@@ -12,13 +12,13 @@ function App() {
         <nav className="navbar">
           <Link to="/">Home</Link>
           <Link to="/createactivity">Create Activity</Link>
-          <Link to="/Schedule">View Schedule</Link>
+          <Link to="/schedule">View Schedule</Link>
         </nav>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/createactivity" element={<CreateAct />} />
           <Route path="/activity/:id" element={<Activity />} />
-          <Route path="/activity/schedule" element={<Schedule />} />
+          <Route path="/schedule" element={<Schedule />} />
         </Routes>
       </Router>
     </div>
